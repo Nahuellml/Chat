@@ -1,4 +1,4 @@
-const socket = io(); // Conectar al servidor WebSocket
+const socket = io('https://chat-production-093f.up.railway.app');
 const messagesDiv = document.getElementById('messages');
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
