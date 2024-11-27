@@ -3,7 +3,6 @@ const http = require('http');
 const { Server } = require('socket.io');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const path = require('path');
 
 // Variables de entorno
 require('dotenv').config();
@@ -18,12 +17,13 @@ const io = new Server(server);
 // Middleware para manejar JSON en el cuerpo de las peticiones
 app.use(bodyParser.json());
 
-// Middleware para servir archivos estáticos desde la carpeta client/public
-app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
+// Middleware para servir archivos estáticos desde client/public
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'client', 'public')));  // Cambié el '../' por 'client'
 
-// Ruta para servir `index.html` en la raíz
+// Servir index.html cuando se accede a la raíz
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'));
 });
 
 // Almacenamiento en memoria para partidas
