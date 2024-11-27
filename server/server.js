@@ -19,12 +19,14 @@ const io = new Server(server);
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta client/public
-app.use(express.static(path.join(__dirname, '../client/public')));
+const publicPath = path.resolve(__dirname, '../client/public');
+app.use(express.static(publicPath));
 
 // Ruta para servir `index.html`
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/public/index.html'));
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
+
 
 
 // Almacenamiento en memoria para partidas
