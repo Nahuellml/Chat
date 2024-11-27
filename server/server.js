@@ -7,7 +7,7 @@ const path = require('path');
 
 // Variables de entorno
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080; 
 const SECRET = process.env.JWT_SECRET;
 
 // Configurar servidor
@@ -19,12 +19,13 @@ const io = new Server(server);
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta client/public
-app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
-// Ruta para servir `index.html` en la raíz
+// Ruta para servir `index.html`
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
+
 
 // Almacenamiento en memoria para partidas
 const gameRooms = {};
