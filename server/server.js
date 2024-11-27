@@ -18,8 +18,8 @@ const io = new Server(server);
 // Middleware para manejar JSON en el cuerpo de las peticiones
 app.use(bodyParser.json());
 
-// Ruta absoluta para los archivos estáticos
-const publicPath = path.resolve(__dirname, 'client', 'public');
+// Obtener la ruta correcta de la carpeta 'client/public' dentro del proyecto
+const publicPath = path.join(__dirname, '..', 'client', 'public');  // Correcta para Railway
 console.log('Sirviendo archivos estáticos desde:', publicPath);
 
 // Middleware para servir archivos estáticos
