@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde client/public
 const path = require('path');
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '..', 'client', 'public')));
 
 // Almacenamiento en memoria para partidas
 const gameRooms = {};
