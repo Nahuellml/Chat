@@ -18,15 +18,16 @@ const io = new Server(server);
 // Middleware para manejar JSON en el cuerpo de las peticiones
 app.use(bodyParser.json());
 
-// Middleware para servir archivos estáticos desde la carpeta client/public
-const publicPath = path.join(__dirname, '../../client/public');
+// Ruta absoluta para los archivos estáticos
+const publicPath = path.resolve(__dirname, 'client', 'public');
 console.log('Sirviendo archivos estáticos desde:', publicPath);
 
+// Middleware para servir archivos estáticos
 app.use(express.static(publicPath));
 
 // Ruta para servir `index.html`
 app.get('/', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.sendFile(path.resolve(publicPath, 'index.html'));
 });
 
 
