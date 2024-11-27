@@ -19,7 +19,7 @@ const io = new Server(server);
 app.use(bodyParser.json());
 
 // Obtener la ruta correcta de la carpeta 'client/public' dentro del proyecto
-const publicPath = path.join(__dirname, '..', 'client', 'public');  // Correcta para Railway
+const publicPath = path.join(__dirname,'client', 'public');  // Correcta para Railway
 console.log('Sirviendo archivos estáticos desde:', publicPath);
 
 // Middleware para servir archivos estáticos
@@ -27,7 +27,7 @@ app.use(express.static(publicPath));
 
 // Ruta para servir `index.html`
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(publicPath, 'index.html'));
+  res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 
