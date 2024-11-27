@@ -19,7 +19,9 @@ const io = new Server(server);
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta client/public
-const publicPath = path.resolve(__dirname, '../client/public');
+const publicPath = path.join(__dirname, '../client/public');
+console.log('Sirviendo archivos estáticos desde:', publicPath);
+
 app.use(express.static(publicPath));
 
 // Ruta para servir `index.html`
