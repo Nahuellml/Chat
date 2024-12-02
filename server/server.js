@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
 
+app.use((req, res, next) => {
+  console.log(`Solicitud: ${req.method} ${req.url}`);
+  next();
+});
 
 
 // Almacenamiento en memoria para partidas
